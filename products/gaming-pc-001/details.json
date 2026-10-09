@@ -1,0 +1,27 @@
+{
+  "name": "Apex Gaming PC",
+  "category": "pc-builds",
+  "price": 1899,
+  "availability": "In stock",
+  "summary": "Ryzen 7 7800X3D with RTX 4070 Super for 1440p gaming",
+  "description": "A fast, quiet 1440p gaming system with a 3D V-Cache processor.\nEvery build is assembled, cable-managed and stress-tested for 24 hours before it ships.",
+  "images": [
+    "main.svg",
+    "inside.svg"
+  ],
+  "specs": {
+    "CPU": "AMD Ryzen 7 7800X3D",
+    "GPU": "NVIDIA GeForce RTX 4070 Super 12 GB",
+    "Motherboard": "B650 ATX, Wi-Fi 6E",
+    "RAM": "32 GB DDR5-6000 (2 x 16 GB)",
+    "Storage": "2 TB NVMe PCIe 4.0 SSD",
+    "PSU": "750 W 80+ Gold, fully modular",
+    "Cooler": "240 mm AIO liquid cooler",
+    "Case": "Mid-tower, tempered glass, mesh front"
+  },
+  "additional": {
+    "Operating system": "Windows 11 Home",
+    "Wi-Fi / Bluetooth": "Wi-Fi 6E, Bluetooth 5.3",
+    "Warranty": "3 years parts, 1 year labor"
+  }
+}

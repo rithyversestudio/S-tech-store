@@ -1,0 +1,25 @@
+{
+  "name": "Lightweight Wireless Mouse",
+  "category": "accessories",
+  "price": 59,
+  "availability": "In stock",
+  "summary": "62 g wireless mouse with 70-hour battery",
+  "description": "A light, symmetrical mouse for gaming and office use, with a low-latency 2.4 GHz receiver and Bluetooth.",
+  "images": [
+    "main.svg",
+    "side.svg"
+  ],
+  "specs": {
+    "Type": "Mouse",
+    "Sensor": "Optical, up to 26,000 DPI",
+    "Connection": "2.4 GHz receiver and Bluetooth",
+    "Buttons": "6 programmable",
+    "Battery": "Up to 70 hours",
+    "Weight": "62 g"
+  },
+  "additional": {
+    "Polling rate": "Up to 1000 Hz",
+    "Charging": "USB-C",
+    "Warranty": "2 years"
+  }
+}

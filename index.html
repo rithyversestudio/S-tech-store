@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Northbyte PCs | Custom PC builds and accessories</title>
+  <meta name="description" content="Custom-built PCs and computer accessories.">
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header" data-active="home"></header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Custom PCs, built and tested in-house.</h1>
+        <p>Pick a ready-made build or choose accessories to go with it. Every system ships with a 3-year parts warranty.</p>
+        <a class="btn" href="#catalog">Browse products</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Categories</h2>
+        <div class="category-grid">
+          <a class="category-card" href="index.html?category=pc-builds#catalog">
+            <h3>PC Builds</h3>
+            <p>Gaming, creator and office systems, assembled and stress-tested.</p>
+          </a>
+          <a class="category-card" href="index.html?category=accessories#catalog">
+            <h3>Accessories</h3>
+            <p>Keyboards, mice and monitors that pair well with our builds.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="catalog">
+      <div class="container">
+        <h2>Products</h2>
+        <div class="toolbar">
+          <label class="field">
+            <span>Search</span>
+            <input id="search" type="search" placeholder="Search by name or spec">
+          </label>
+          <label class="field">
+            <span>Category</span>
+            <select id="category">
+              <option value="all">All products</option>
+              <option value="pc-builds">PC Builds</option>
+              <option value="accessories">Accessories</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Sort by</span>
+            <select id="sort">
+              <option value="name-asc">Name: A to Z</option>
+              <option value="name-desc">Name: Z to A</option>
+              <option value="price-asc">Price: low to high</option>
+              <option value="price-desc">Price: high to low</option>
+            </select>
+          </label>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite">Loading products...</p>
+        <div id="grid" class="grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+
+  <script src="scripts/common.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

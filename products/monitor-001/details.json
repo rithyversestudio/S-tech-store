@@ -1,0 +1,26 @@
+{
+  "name": "27\" 1440p 165 Hz Monitor",
+  "category": "accessories",
+  "price": 299,
+  "availability": "Out of stock",
+  "summary": "27-inch IPS panel, 1440p, 165 Hz",
+  "description": "A sharp, fast IPS monitor that pairs well with our gaming and creator builds. Currently out of stock; contact us for the next delivery date.",
+  "images": [
+    "main.svg",
+    "back.svg"
+  ],
+  "specs": {
+    "Type": "Monitor",
+    "Screen size": "27 inches",
+    "Resolution": "2560 x 1440",
+    "Panel": "IPS",
+    "Refresh rate": "165 Hz",
+    "Response time": "1 ms (GtG)",
+    "Inputs": "2 x HDMI 2.0, 1 x DisplayPort 1.4"
+  },
+  "additional": {
+    "Stand": "Height, tilt and swivel adjustable",
+    "VESA mount": "100 x 100 mm",
+    "Warranty": "3 years"
+  }
+}
