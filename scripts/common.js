@@ -73,21 +73,36 @@ function renderChrome() {
     </ul></nav></div>`;
 
   footer.id = "contact";
+  const icons = {
+    Instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>',
+    Facebook: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5H16l.5-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.5V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21h3z"/></svg>',
+    YouTube: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg>'
+  };
+  const shopLinks = [["gaming-pc", "Gaming PCs"], ["creator-pc", "Creator PCs"], ["office-pc", "Office PCs"], ["monitor", "Monitors"], ["keyboard", "Keyboards"], ["mouse", "Mice"]];
   footer.innerHTML = `
     <div class="container">
       <div class="footer-grid">
-        <div><h3>${esc(SHOP.name)}</h3><p>Custom-built PCs and accessories, assembled and tested in-house.</p></div>
+        <div class="footer-brand">
+          <a class="logo" href="index.html"><img class="logo-mark" src="images/logo.png" alt="" width="36" height="36">${esc(SHOP.name)}</a>
+          <p class="footer-tag">Custom-built PCs and accessories</p>
+        </div>
+        <div><h3>Shop</h3><ul>
+          ${shopLinks.map(([t, l]) => `<li><a href="index.html?type=${t}">${l}</a></li>`).join("")}
+        </ul></div>
         <div><h3>Contact</h3><ul>
           <li><a href="mailto:${esc(SHOP.email)}">${esc(SHOP.email)}</a></li>
           <li><a href="tel:${esc(SHOP.phone.replace(/\s/g, ""))}">${esc(SHOP.phone)}</a></li>
           <li>${esc(SHOP.address)}</li>
           <li>${esc(SHOP.hours)}</li>
         </ul></div>
-        <div><h3>Follow us</h3><ul>
-          ${SHOP.social.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`).join("")}
-        </ul></div>
+        <div><h3>Follow Us</h3>
+          <ul class="social">
+            ${SHOP.social.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener" aria-label="${esc(s.label)}" title="${esc(s.label)}">${icons[s.label] || esc(s.label)}</a></li>`).join("")}
+          </ul>
+        </div>
+        <p class="footer-slogan">Better Technology<br><strong>A Brighter Tomorrow.</strong></p>
       </div>
-      <p class="copyright">&copy; ${new Date().getFullYear()} ${esc(SHOP.name)}. Prices and availability may change.</p>
+      <p class="copyright">&copy; ${new Date().getFullYear()} ${esc(SHOP.name)}. All rights reserved. Prices and availability may change.</p>
     </div>`;
 }
 

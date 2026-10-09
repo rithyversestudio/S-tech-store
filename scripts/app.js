@@ -25,19 +25,6 @@ function matches(p, query, category) {
   return query.split(/\s+/).every((word) => haystack.includes(word));
 }
 
-function renderRecommended() {
-  let list = products.filter((p) => p.recommended);
-  if (!list.length) list = products.slice(0, 5);
-  const section = document.getElementById("recommended");
-  section.hidden = !list.length;
-  document.getElementById("rec-row").innerHTML = list.map((p) => `
-    <a class="rec-card" href="product.html?id=${encodeURIComponent(p.id)}">
-      <img src="${esc(p.images[0] || PLACEHOLDER)}" alt="" loading="lazy">
-      <div><h3>${esc(p.name)}</h3><span class="price">${formatPrice(p.price)}</span></div>
-    </a>`).join("");
-  applyImageFallback(section);
-}
-
 function cardHTML(p) {
   const href = `product.html?id=${encodeURIComponent(p.id)}`;
   return `
@@ -53,6 +40,15 @@ function cardHTML(p) {
         </div>
       </div>
     </article>`;
+}
+
+function renderRecommended() {
+  let list = products.filter((p) => p.recommended);
+  if (!list.length) list = products.slice(0, 5);
+  const section = document.getElementById("recommended");
+  section.hidden = !list.length;
+  document.getElementById("rec-row").innerHTML = list.map(cardHTML).join("");
+  applyImageFallback(section);
 }
 
 function render() {
