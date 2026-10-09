@@ -30,33 +30,12 @@ function renderRecommended() {
   if (!list.length) list = products.slice(0, 5);
   const section = document.getElementById("recommended");
   section.hidden = !list.length;
-  const wished = getWishlist();
-  const row = document.getElementById("rec-row");
-  row.innerHTML = list.slice(0, 5).map((p) => `
-    <article class="rec-card">
-      <a class="rec-link" href="product.html?id=${encodeURIComponent(p.id)}">
-        <div class="rec-img"><img src="${esc(p.images[0] || PLACEHOLDER)}" alt="" loading="lazy"></div>
-        <h3>${esc(p.name)}</h3>
-        <p class="rec-sub">${esc(p.summary || "")}</p>
-        <span class="price">${formatPrice(p.price)}</span>
-      </a>
-      <button class="wish" type="button" data-id="${esc(p.id)}" aria-pressed="${wished.includes(p.id)}" aria-label="Save ${esc(p.name)} to wishlist">
-        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.7 7.8 3.6 4.5 7 4.5c2 0 3.5 1.1 5 3 1.5-1.9 3-3 5-3 3.4 0 5.3 3.3 4.2 6.6-1.7 4.8-9.2 9.4-9.2 9.4z"/></svg>
-      </button>
-    </article>`).join("");
-  row.onclick = (e) => {
-    const btn = e.target.closest(".wish");
-    if (!btn) return;
-    const ids = getWishlist();
-    const next = ids.includes(btn.dataset.id) ? ids.filter((i) => i !== btn.dataset.id) : [...ids, btn.dataset.id];
-    try { localStorage.setItem("wishlist", JSON.stringify(next)); } catch {}
-    btn.setAttribute("aria-pressed", String(next.includes(btn.dataset.id)));
-  };
+  document.getElementById("rec-row").innerHTML = list.map((p) => `
+    <a class="rec-card" href="product.html?id=${encodeURIComponent(p.id)}">
+      <img src="${esc(p.images[0] || PLACEHOLDER)}" alt="" loading="lazy">
+      <div><h3>${esc(p.name)}</h3><span class="price">${formatPrice(p.price)}</span></div>
+    </a>`).join("");
   applyImageFallback(section);
-}
-
-function getWishlist() {
-  try { return JSON.parse(localStorage.getItem("wishlist")) || []; } catch { return []; }
 }
 
 function cardHTML(p) {

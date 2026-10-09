@@ -45,3 +45,6 @@ Images can be .jpg, .png, .webp or .svg (the samples are .svg placeholders; repl
 - New categories: add them to `CATEGORIES` in `scripts/common.js` and to the category `<select>` in `index.html`.
 
 - "Shop by Category" tiles (photos in `images/categories/`, replace the files with real photos and update the `<img src>` in `index.html`): edit the `.tile-row` block in `index.html` (link `index.html?type=<type>#catalog`) and the `TYPES` list in `scripts/app.js`; give each product a matching `"type"` in its `details.json`.
+
+## Category photos
+The "Shop by Category" tiles use `images/categories/<type>.jpg` when it exists and fall back to the `.svg` drawing next to it. To use real photos, save them with these exact names (about 600x450, white or light background works best): `gaming-pc.jpg`, `creator-pc.jpg`, `office-pc.jpg`, `monitor.jpg`, `keyboard.jpg`, `mouse.jpg`.
