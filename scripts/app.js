@@ -7,6 +7,8 @@ const els = {
   sort: document.getElementById("sort")
 };
 let products = [];
+let activeType = "";
+const TYPES = { "gaming-pc": "Gaming PCs", "creator-pc": "Creator PCs", "office-pc": "Office PCs", "monitor": "Monitors", "keyboard": "Keyboards", "mouse": "Mice" };
 
 const sorters = {
   "name-asc": (a, b) => a.name.localeCompare(b.name),
@@ -16,6 +18,7 @@ const sorters = {
 };
 
 function matches(p, query, category) {
+  if (activeType && p.type !== activeType) return false;
   if (category !== "all" && p.category !== category) return false;
   if (!query) return true;
   const haystack = [p.name, p.summary, p.description, ...Object.values(p.specs || {})].join(" ").toLowerCase();
@@ -48,6 +51,15 @@ function render() {
   els.status.textContent = list.length
     ? `Showing ${list.length} of ${products.length} products`
     : "No products match your search. Try a different keyword or category.";
+  if (activeType) {
+    const chip = document.createElement("a");
+    chip.className = "filter-chip";
+    chip.href = "index.html#catalog";
+    chip.textContent = `${TYPES[activeType]} \u00d7`;
+    chip.setAttribute("aria-label", `Clear ${TYPES[activeType]} filter`);
+    chip.addEventListener("click", (e) => { e.preventDefault(); activeType = ""; history.replaceState(null, "", "index.html#catalog"); render(); });
+    els.status.append(chip);
+  }
 }
 
 async function init() {
@@ -59,7 +71,10 @@ async function init() {
     els.status.textContent = "Products could not be loaded. If you opened this file directly, run a local server instead (see README).";
     return;
   }
-  const requested = new URLSearchParams(location.search).get("category");
+  const params = new URLSearchParams(location.search);
+  const type = params.get("type");
+  if (type && TYPES[type]) activeType = type;
+  const requested = params.get("category");
   if (requested && CATEGORIES[requested]) els.category.value = requested;
   ["input", "change"].forEach((evt) => {
     els.search.addEventListener(evt, render);

@@ -1,6 +1,7 @@
 {
   "name": "Apex Gaming PC",
   "category": "pc-builds",
+  "type": "gaming-pc",
   "price": 1899,
   "availability": "In stock",
   "summary": "Ryzen 7 7800X3D with RTX 4070 Super for 1440p gaming",

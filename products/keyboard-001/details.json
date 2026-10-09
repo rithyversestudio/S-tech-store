@@ -1,6 +1,7 @@
 {
   "name": "Tenkeyless Mechanical Keyboard",
   "category": "accessories",
+  "type": "keyboard",
   "price": 89,
   "availability": "In stock",
   "summary": "Compact wired keyboard with hot-swappable switches",

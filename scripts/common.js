@@ -1,7 +1,7 @@
 // Shared helpers and site-wide settings. Edit SHOP to change the header/footer on every page.
 const SHOP = {
-  name: "Northbyte PCs",
-  email: "hello@northbyte.example",
+  name: "S TECH STORE",
+  email: "hello@stechstore.example",
   phone: "+1 555 010 0199",
   address: "12 Circuit Lane, Austin, TX 78701",
   hours: "Mon to Sat, 9:00 to 18:00",
@@ -56,7 +56,7 @@ function renderChrome() {
 
   header.innerHTML = `
     <div class="container nav">
-      <a class="logo" href="index.html"><span class="logo-mark"></span>${esc(SHOP.name)}</a>
+      <a class="logo" href="index.html"><img class="logo-mark" src="images/logo.png" alt="" width="32" height="32">${esc(SHOP.name)}</a>
       <nav aria-label="Main"><ul>
         ${link("index.html", "Home", "home")}
         ${link("index.html?category=pc-builds#catalog", "PC Builds", "pc-builds")}

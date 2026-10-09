@@ -1,4 +1,4 @@
-# Northbyte PCs: static product catalog
+# S TECH STORE: static product catalog
 
 Plain HTML, CSS and vanilla JavaScript. No build step, backend or database.
 
@@ -27,6 +27,7 @@ The product page URL is `product.html?id=<folder-name>`.
     {
       "name": "Product name",
       "category": "pc-builds",          // or "accessories"
+      "type": "gaming-pc",              // optional: matches a "Shop by Category" tile
       "price": 1899,                    // number, USD
       "availability": "In stock",       // "In stock", "Made to order", "Out of stock", ...
       "summary": "One line shown on the card",
@@ -42,3 +43,5 @@ Images can be .jpg, .png, .webp or .svg (the samples are .svg placeholders; repl
 - Shop name, contact details and social links: `SHOP` at the top of `scripts/common.js` (header and footer on every page).
 - Colors and spacing: variables at the top of `styles/style.css`.
 - New categories: add them to `CATEGORIES` in `scripts/common.js` and to the category `<select>` in `index.html`.
+
+- "Shop by Category" tiles: edit the `.tile-row` block in `index.html` (link `index.html?type=<type>#catalog`) and the `TYPES` list in `scripts/app.js`; give each product a matching `"type"` in its `details.json`.
