@@ -2,6 +2,7 @@
   "name": "27\" 1440p 165 Hz Monitor",
   "category": "accessories",
   "type": "monitor",
+  "recommended": true,
   "price": 299,
   "availability": "Out of stock",
   "summary": "27-inch IPS panel, 1440p, 165 Hz",

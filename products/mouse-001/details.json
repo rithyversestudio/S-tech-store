@@ -2,6 +2,7 @@
   "name": "Lightweight Wireless Mouse",
   "category": "accessories",
   "type": "mouse",
+  "recommended": true,
   "price": 59,
   "availability": "In stock",
   "summary": "62 g wireless mouse with 70-hour battery",

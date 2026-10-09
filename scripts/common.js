@@ -54,16 +54,23 @@ function renderChrome() {
   const active = header.dataset.active;
   const link = (href, label, key) => `<li><a href="${href}"${key === active ? ' aria-current="page"' : ""}>${label}</a></li>`;
 
+  const searchIcon = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>`;
   header.innerHTML = `
     <div class="container nav">
-      <a class="logo" href="index.html"><img class="logo-mark" src="images/logo.png" alt="" width="32" height="32">${esc(SHOP.name)}</a>
-      <nav aria-label="Main"><ul>
-        ${link("index.html", "Home", "home")}
-        ${link("index.html?category=pc-builds#catalog", "PC Builds", "pc-builds")}
-        ${link("index.html?category=accessories#catalog", "Accessories", "accessories")}
-        ${link("#contact", "Contact", "contact")}
-      </ul></nav>
-    </div>`;
+      <a class="logo" href="index.html"><img class="logo-mark" src="images/logo.png" alt="" width="36" height="36">${esc(SHOP.name)}</a>
+      <form class="search" id="search-form" role="search" action="index.html" method="get">
+        <span class="search-icon">${searchIcon}</span>
+        <input id="site-search" name="q" type="search" placeholder="Search for PCs, monitors, keyboards or more..." aria-label="Search products" autocomplete="off" aria-controls="search-suggest" aria-expanded="false">
+        <button type="submit" aria-label="Search">${searchIcon}</button>
+        <ul id="search-suggest" class="suggest" role="listbox" hidden></ul>
+      </form>
+    </div>
+    <div class="nav-row"><nav class="container" aria-label="Main"><ul>
+      ${link("index.html", "Home", "home")}
+      ${link("index.html?category=pc-builds#catalog", "PC Builds", "pc-builds")}
+      ${link("index.html?category=accessories#catalog", "Accessories", "accessories")}
+      ${link("#contact", "Contact", "contact")}
+    </ul></nav></div>`;
 
   footer.id = "contact";
   footer.innerHTML = `
@@ -85,3 +92,53 @@ function renderChrome() {
 }
 
 renderChrome();
+
+// Pre-fill the header search from ?q= on every page.
+(() => {
+  const q = new URLSearchParams(location.search).get("q");
+  if (q) document.getElementById("site-search").value = q;
+})();
+
+// Live suggestions under the header search (products load on first use).
+(() => {
+  const input = document.getElementById("site-search");
+  const list = document.getElementById("search-suggest");
+  const form = document.getElementById("search-form");
+  let all = null, active = -1;
+
+  const close = () => { list.hidden = true; input.setAttribute("aria-expanded", "false"); active = -1; };
+  const setActive = (i) => {
+    const items = [...list.children];
+    items.forEach((li, n) => li.classList.toggle("active", n === i));
+    active = i;
+  };
+
+  async function update() {
+    const words = input.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    if (!words.length) return close();
+    if (!all) { try { all = await loadAllProducts(); } catch { return; } }
+    const hits = all.filter((p) => {
+      const hay = [p.name, p.summary, ...Object.values(p.specs || {})].join(" ").toLowerCase();
+      return words.every((w) => hay.includes(w));
+    }).slice(0, 5);
+    list.innerHTML = hits.length
+      ? hits.map((p) => `<li role="option"><a href="product.html?id=${encodeURIComponent(p.id)}"><img src="${esc(p.images[0] || PLACEHOLDER)}" alt=""><span class="s-name">${esc(p.name)}</span><span class="s-price">${formatPrice(p.price)}</span></a></li>`).join("")
+      : `<li class="s-empty">No matches. Press Enter to search anyway.</li>`;
+    applyImageFallback(list);
+    list.hidden = false;
+    input.setAttribute("aria-expanded", "true");
+    active = -1;
+  }
+
+  input.addEventListener("input", update);
+  input.addEventListener("focus", update);
+  input.addEventListener("keydown", (e) => {
+    const n = list.querySelectorAll("a").length;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowDown" && n) { e.preventDefault(); setActive((active + 1) % n); }
+    else if (e.key === "ArrowUp" && n) { e.preventDefault(); setActive((active - 1 + n) % n); }
+    else if (e.key === "Enter" && active >= 0) { e.preventDefault(); list.querySelectorAll("a")[active].click(); }
+  });
+  form.addEventListener("submit", close);
+  document.addEventListener("click", (e) => { if (!form.contains(e.target)) close(); });
+})();

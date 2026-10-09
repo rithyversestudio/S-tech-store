@@ -44,4 +44,4 @@ Images can be .jpg, .png, .webp or .svg (the samples are .svg placeholders; repl
 - Colors and spacing: variables at the top of `styles/style.css`.
 - New categories: add them to `CATEGORIES` in `scripts/common.js` and to the category `<select>` in `index.html`.
 
-- "Shop by Category" tiles: edit the `.tile-row` block in `index.html` (link `index.html?type=<type>#catalog`) and the `TYPES` list in `scripts/app.js`; give each product a matching `"type"` in its `details.json`.
+- "Shop by Category" tiles (photos in `images/categories/`, replace the files with real photos and update the `<img src>` in `index.html`): edit the `.tile-row` block in `index.html` (link `index.html?type=<type>#catalog`) and the `TYPES` list in `scripts/app.js`; give each product a matching `"type"` in its `details.json`.
