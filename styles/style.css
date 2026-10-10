@@ -152,7 +152,7 @@ body.category-view #catalog { padding-top: 2rem; }
 .card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--muted); }
 .card-body { display: flex; flex-direction: column; flex: 1; padding: 1rem; }
 .card-category { font-size: .8rem; color: var(--text-2); }
-.card-summary { margin: 0 0 1rem; font-size: .9rem; color: var(--text-2); }
+.card-summary { margin: 0 0 1rem; font-size: .9rem; color: var(--text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .card-footer { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-top: auto; }
 .price { font-weight: 700; font-size: 1.1rem; }
 
@@ -232,6 +232,10 @@ body.category-view #catalog { padding-top: 2rem; }
 @media (max-width: 600px) {
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
   .rec-row { gap: .75rem; }
+  /* Smaller category tiles so more fit on screen and the row is easy to swipe */
+  .tile-row { gap: .5rem; padding-bottom: .6rem; }
+  .tile { flex: 0 0 104px; gap: .4rem; padding: .55rem .4rem .6rem; border-radius: 10px; font-size: .74rem; line-height: 1.2; }
+  .tile img { height: 58px; }
   .rec-row > .card { flex: 0 0 calc(50% - .375rem); }
   .card-body { padding: .65rem .7rem .75rem; min-height: 11rem; /* same card height for 1- and 2-line names; the extra space ends up between description and price */ }
   .card-category { font-size: .72rem; }
