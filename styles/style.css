@@ -147,14 +147,33 @@ body.category-view #catalog { padding-top: 2rem; }
 
 /* Product grid */
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.25rem; }
-.card { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: #fff; transition: border-color .15s; }
-.card:hover { border-color: var(--accent); }
-.card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--muted); }
-.card-body { display: flex; flex-direction: column; flex: 1; padding: 1rem; }
-.card-category { font-size: .8rem; color: var(--text-2); }
-.card-summary { margin: 0 0 1rem; font-size: .9rem; color: var(--text-2); }
-.card-footer { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-top: auto; }
-.price { font-weight: 700; font-size: 1.1rem; }
+.card { position: relative; display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 1px 3px rgba(20, 10, 10, .05); transition: border-color .2s, box-shadow .2s, transform .2s; }
+.card-media { position: relative; overflow: hidden; background: var(--muted); }
+.card-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .35s ease; }
+.card-badge { position: absolute; top: .6rem; left: .6rem; padding: .18rem .6rem; border-radius: 999px; background: rgba(255, 255, 255, .95); box-shadow: 0 1px 4px rgba(0, 0, 0, .15); font-size: .72rem; font-weight: 600; line-height: 1.4; }
+.card-badge::before { content: ""; display: inline-block; width: .5rem; height: .5rem; margin-right: .35rem; border-radius: 50%; background: currentColor; vertical-align: .02em; }
+.card-badge.ok { color: var(--ok); }
+.card-badge.warn { color: var(--warn); }
+.card-badge.bad { color: var(--bad); }
+.card.is-out .card-media img { filter: grayscale(.8); opacity: .75; }
+.card-body { display: flex; flex-direction: column; flex: 1; padding: .9rem 1rem 1rem; }
+.card-category { font-size: .72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.card h3 { margin: .25rem 0 .35rem; font-size: 1.05rem; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card-link { text-decoration: none; }
+.card-link::after { content: ""; position: absolute; inset: 0; z-index: 1; } /* stretches the link over the whole card */
+.card-link:focus-visible { outline: none; }
+.card:has(.card-link:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+.card-summary { margin: 0 0 .9rem; font-size: .88rem; line-height: 1.45; color: var(--text-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card-footer { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-top: auto; padding-top: .75rem; border-top: 1px solid var(--border); }
+.price { font-weight: 700; font-size: 1.15rem; }
+.card .price { color: var(--accent); letter-spacing: -.01em; }
+.card-go { display: grid; place-items: center; flex: none; width: 2rem; height: 2rem; border-radius: 50%; background: var(--accent-soft); color: var(--accent); transition: background .2s, color .2s, transform .2s; }
+@media (hover: hover) {
+  .card:hover { border-color: var(--accent); box-shadow: 0 10px 24px rgba(150, 27, 30, .15); transform: translateY(-3px); }
+  .card:hover .card-media img { transform: scale(1.05); }
+  .card:hover .card-go { background: var(--accent); color: #fff; transform: translateX(2px); }
+}
+.card:active { transform: scale(.985); }
 
 /* Product page */
 .back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-2); text-decoration: none; }
@@ -233,16 +252,22 @@ body.category-view #catalog { padding-top: 2rem; }
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
   .rec-row { gap: .75rem; }
   .rec-row > .card { flex: 0 0 calc(50% - .375rem); }
-  .card-body { padding: .65rem .7rem .75rem; min-height: 11rem; /* same card height for 1- and 2-line names; the extra space ends up between description and price */ }
-  .card-category { font-size: .72rem; }
-  .card h3 { margin-bottom: .25rem; font-size: .92rem; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-  .card-summary { margin-bottom: .4rem; font-size: .8rem; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
-  .card-footer { flex-direction: column; align-items: stretch; gap: .4rem; }
+  .card { border-radius: 12px; }
+  .card-badge { top: .4rem; left: .4rem; padding: .12rem .45rem; font-size: .65rem; }
+  .card-body { padding: .6rem .65rem .7rem; }
+  .card-category { font-size: .62rem; }
+  .card h3 { margin: .15rem 0 .25rem; font-size: .9rem; line-height: 1.25; min-height: 2.5em; /* same height for 1- and 2-line names */ }
+  .card-summary { margin-bottom: .5rem; font-size: .76rem; line-height: 1.35; -webkit-line-clamp: 2; min-height: 2.7em; }
+  .card-footer { padding-top: .5rem; }
   .card .price { font-size: 1rem; }
-  .card-footer .btn { width: 100%; padding: .45rem .5rem; font-size: .85rem; text-align: center; }
+  .card-go { width: 1.75rem; height: 1.75rem; }
 }
 @media (max-width: 480px) {
-  .toolbar, body.category-view .toolbar { grid-template-columns: 1fr; max-width: none; }
+  /* filters stay side by side on phones */
+  .toolbar { grid-template-columns: 1fr 1fr; gap: .6rem; }
+  body.category-view .toolbar { grid-template-columns: 1.3fr 1fr; max-width: none; }
+  .field { min-width: 0; font-size: .8rem; }
+  .field select, .field input { min-width: 0; width: 100%; padding-left: .6rem; padding-right: .4rem; }
   .specs div { grid-template-columns: 1fr; gap: .1rem; }
   .hero { background: url("../images/hero-bg.jpg") 72% bottom / auto 52% no-repeat, linear-gradient(180deg, #0a0404 0%, #3a0f08 100%); }
   .hero-grid { padding-top: 2.5rem; padding-bottom: 2rem; min-height: 540px; align-items: flex-start; }
