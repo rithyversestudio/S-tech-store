@@ -233,9 +233,9 @@ body.category-view #catalog { padding-top: 2rem; }
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
   .rec-row { gap: .75rem; }
   /* Smaller category tiles so more fit on screen and the row is easy to swipe */
-  .tile-row { gap: .5rem; padding-bottom: .6rem; }
-  .tile { flex: 0 0 104px; gap: .4rem; padding: .55rem .4rem .6rem; border-radius: 10px; font-size: .74rem; line-height: 1.2; }
-  .tile img { height: 58px; }
+  .tile-row { gap: .75rem; padding-bottom: .6rem; }
+  .tile { flex: 0 0 120px; gap: .4rem; padding: .55rem .4rem .6rem; border-radius: 10px; font-size: .74rem; line-height: 1.2; }
+  .tile img { height: 72px; }
   .rec-row > .card { flex: 0 0 calc(50% - .375rem); }
   .card-body { padding: .65rem .7rem .75rem; min-height: 11rem; /* same card height for 1- and 2-line names; the extra space ends up between description and price */ }
   .card-category { font-size: .72rem; }
