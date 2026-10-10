@@ -6,7 +6,10 @@
   "summary": "Small-form-factor build with Core i5 and RTX 4060 Ti",
   "description": "A small, quiet desktop that fits on any desk without giving up gaming performance.",
   "images": [
-    "main.svg"
+    "main.jpg",
+    "image-2.jpg",
+    "image-3.jpg",
+    "image-4.jpg"
   ],
   "specs": {
     "CPU": "Intel Core i5-14600K",

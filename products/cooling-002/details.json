@@ -6,7 +6,10 @@
   "summary": "Quiet air cooler with 6 heat pipes",
   "description": "A reliable air-cooling option that rivals many liquid coolers.",
   "images": [
-    "main.svg"
+    "main.jpg",
+    "image-2.jpg",
+    "image-3.jpg",
+    "image-4.jpg"
   ],
   "specs": {
     "Type": "Air cooler",

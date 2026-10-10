@@ -6,7 +6,10 @@
   "summary": "24-inch IPS Full HD, 75 Hz, thin bezels",
   "description": "A reliable everyday monitor with an eye-comfort mode for long work days.",
   "images": [
-    "main.svg"
+    "main.jpg",
+    "image-2.jpg",
+    "image-3.jpg",
+    "image-4.jpg"
   ],
   "specs": {
     "Size": "24 inch",

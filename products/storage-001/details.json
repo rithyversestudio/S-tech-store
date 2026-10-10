@@ -6,7 +6,10 @@
   "summary": "Fast M.2 SSD, up to 7,000 MB/s read",
   "description": "Quick boot and load times for gaming and work.",
   "images": [
-    "main.svg"
+    "main.jpg",
+    "image-2.jpg",
+    "image-3.jpg",
+    "image-4.jpg"
   ],
   "specs": {
     "Type": "SSD, M.2 NVMe",

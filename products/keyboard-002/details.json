@@ -6,7 +6,10 @@
   "summary": "Full-size keyboard with number pad and RGB",
   "description": "A comfortable full-size keyboard with tactile switches.",
   "images": [
-    "main.svg"
+    "main.jpg",
+    "image-2.jpg",
+    "image-3.jpg",
+    "image-4.jpg"
   ],
   "specs": {
     "Layout": "Full-size, US ANSI",

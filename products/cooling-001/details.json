@@ -6,7 +6,10 @@
   "summary": "Dual-fan liquid cooler for AM5 and LGA1700",
   "description": "Quiet, efficient cooling for mid-to-high-end processors.",
   "images": [
-    "main.svg"
+    "main.jpg",
+    "image-2.jpg",
+    "image-3.jpg",
+    "image-4.jpg"
   ],
   "specs": {
     "Type": "AIO liquid cooler",

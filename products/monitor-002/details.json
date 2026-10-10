@@ -6,7 +6,10 @@
   "summary": "27-inch IPS, QHD, 165 Hz, 1 ms",
   "description": "A sharp, fast IPS panel for competitive and casual gaming.",
   "images": [
-    "main.svg"
+    "main.jpg",
+    "image-2.jpg",
+    "image-3.jpg",
+    "image-4.jpg"
   ],
   "specs": {
     "Size": "27 inch",

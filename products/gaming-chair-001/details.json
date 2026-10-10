@@ -6,7 +6,10 @@
   "summary": "High-back ergonomic chair with lumbar support",
   "description": "A padded racing-style chair with 4D armrests and recline.",
   "images": [
-    "main.svg"
+    "main.jpg",
+    "image-2.jpg",
+    "image-3.jpg",
+    "image-4.jpg"
   ],
   "specs": {
     "Material": "PU leather",

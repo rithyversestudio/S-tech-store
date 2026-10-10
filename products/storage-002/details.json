@@ -6,7 +6,10 @@
   "summary": "7200 RPM desktop hard drive for bulk storage",
   "description": "Large, affordable storage for games, media and backups.",
   "images": [
-    "main.svg"
+    "main.jpg",
+    "image-2.jpg",
+    "image-3.jpg",
+    "image-4.jpg"
   ],
   "specs": {
     "Type": "HDD, 3.5 inch",

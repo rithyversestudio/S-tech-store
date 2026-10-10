@@ -6,7 +6,10 @@
   "summary": "Fully modular PSU for high-end builds",
   "description": "Stable power for powerful graphics cards, with a 10-year warranty.",
   "images": [
-    "main.svg"
+    "main.jpg",
+    "image-2.jpg",
+    "image-3.jpg",
+    "image-4.jpg"
   ],
   "specs": {
     "Wattage": "850 W",

@@ -6,7 +6,10 @@
   "summary": "Quiet low-profile keyboard, Bluetooth and 2.4 GHz",
   "description": "A slim keyboard for the office or living room.",
   "images": [
-    "main.svg"
+    "main.jpg",
+    "image-2.jpg",
+    "image-3.jpg",
+    "image-4.jpg"
   ],
   "specs": {
     "Layout": "Full-size, low profile",

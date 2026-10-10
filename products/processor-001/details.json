@@ -6,7 +6,10 @@
   "summary": "6-core, 12-thread AM5 processor",
   "description": "A strong value CPU for gaming and everyday use. Cooler included.",
   "images": [
-    "main.svg"
+    "main.jpg",
+    "image-2.jpg",
+    "image-3.jpg",
+    "image-4.jpg"
   ],
   "specs": {
     "Socket": "AM5",

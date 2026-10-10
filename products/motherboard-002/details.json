@@ -6,7 +6,10 @@
   "summary": "LGA1700 micro-ATX board with DDR4",
   "description": "A compact budget board for Intel 12th to 14th gen processors.",
   "images": [
-    "main.svg"
+    "main.jpg",
+    "image-2.jpg",
+    "image-3.jpg",
+    "image-4.jpg"
   ],
   "specs": {
     "Socket": "LGA1700",
