@@ -24,20 +24,18 @@ function matches(p, query, category) {
   return query.split(/\s+/).every((word) => haystack.includes(word));
 }
 
-// The whole card is one tappable link (the product name carries the link, a CSS overlay stretches it over the card).
 function cardHTML(p) {
   const href = `product.html?id=${encodeURIComponent(p.id)}`;
   return `
     <article class="card">
-      <div class="card-media">
-        <img src="${esc(p.images[0] || PLACEHOLDER)}" alt="" loading="lazy">
-      </div>
+      <a href="${href}" tabindex="-1" aria-hidden="true"><img src="${esc(p.images[0] || PLACEHOLDER)}" alt="" loading="lazy"></a>
       <div class="card-body">
-        <h3><a class="card-link" href="${href}">${esc(p.name)}</a></h3>
         <span class="card-category">${esc(CATEGORIES[p.category] || p.category)}</span>
+        <h3>${esc(p.name)}</h3>
+        <p class="card-summary">${esc(p.summary || "")}</p>
         <div class="card-footer">
           <span class="price">${formatPrice(p.price)}</span>
-          <span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+          <a class="btn" href="${href}" aria-label="View details for ${esc(p.name)}">View Details</a>
         </div>
       </div>
     </article>`;

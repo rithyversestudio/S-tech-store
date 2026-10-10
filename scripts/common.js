@@ -5,7 +5,7 @@ const SHOP = {
   phone: "093 393 345",
   telegram: "https://t.me/PCANDGAMESTORE",
   address: "12 Circuit Lane, Austin, TX 78701",
-  hours: "Mon to Sat, 9:00 to 18:00",
+  hours: "Open: 8:00 AM - 6:00 PM",
   mapLink: "https://maps.app.goo.gl/r9RHLS3vN4okqGZg8", // opens when the map card is tapped
   mapUrl: "https://maps.app.goo.gl/r9RHLS3vN4okqGZg8",
   mapEmbed: "https://maps.google.com/maps?q=11.5428274,104.8345808&z=17&output=embed",
@@ -136,6 +136,7 @@ function renderChrome() {
           <li><a href="mailto:${esc(SHOP.email)}">${esc(SHOP.email)}</a></li>
           <li><a href="${esc(SHOP.telegram)}" target="_blank" rel="noopener">Telegram: @${esc(SHOP.telegram.split("/").pop())}</a></li>
           <li><a href="tel:${esc(SHOP.phone.replace(/\s/g, ""))}">${esc(SHOP.phone)}</a></li>
+          <li>${esc(SHOP.hours)}</li>
         </ul></div>
         <div><h3>Follow Us</h3>
           <ul class="social">
