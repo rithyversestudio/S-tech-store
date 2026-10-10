@@ -100,7 +100,9 @@ function renderChrome() {
     Facebook: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5H16l.5-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.5V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21h3z"/></svg>',
     YouTube: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg>'
   };
-  const shopLinks = Object.entries(CATEGORIES);
+  // Footer shows only a few popular categories (edit this list); the rest are under "All Categories".
+  const footerCategories = ["pc-builds", "monitors", "graphics-cards", "keyboards", "mice"];
+  const shopLinks = footerCategories.filter((k) => CATEGORIES[k]).map((k) => [k, CATEGORIES[k]]);
   footer.innerHTML = `
     <div class="container">
       <div class="footer-grid">
@@ -110,6 +112,7 @@ function renderChrome() {
         </div>
         <div><h3>Shop</h3><ul>
           ${shopLinks.map(([t, l]) => `<li><a href="index.html?category=${t}">${l}</a></li>`).join("")}
+          <li><a href="index.html#categories">All Categories</a></li>
         </ul></div>
         <div><h3>Contact</h3><ul>
           <li><a href="mailto:${esc(SHOP.email)}">${esc(SHOP.email)}</a></li>

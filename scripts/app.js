@@ -67,7 +67,7 @@ function buildCategoryUI() {
   const row = document.getElementById("tile-row");
   row.innerHTML = Object.entries(CATEGORIES).map(([k, v]) => `
     <a class="tile" href="index.html?category=${esc(k)}">
-      <img src="images/categories/${esc(k)}.jpg" onerror="this.onerror=null;this.src=PLACEHOLDER" alt="" loading="lazy">
+      <img src="images/categories/${esc(k)}.png" onerror="this.onerror=null;this.src=PLACEHOLDER" alt="" loading="lazy">
       <span>${esc(v)}</span>
     </a>`).join("");
 }

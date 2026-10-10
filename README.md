@@ -44,4 +44,4 @@ Images can be .jpg, .png, .webp or .svg (the samples are .svg placeholders; repl
 - Categories: edit `CATEGORIES` in `scripts/common.js` (slug -> label). The "Shop by Category" tiles, the category dropdown, the footer links and the category pages all build from it. Valid slugs: `pc-builds`, `monitors`, `graphics-cards`, `processors`, `motherboards`, `ram`, `storage-ssd-hdd`, `power-supplies`, `pc-cases`, `cooling-systems`, `keyboards`, `mice`, `headsets`, `gaming-chair`, `other-accessories`. A category page is `index.html?category=<slug>`.
 
 ## Category photos
-Each tile uses `images/categories/<slug>.jpg` (600x450, white background). To change a photo, replace that file keeping the same name, e.g. `graphics-cards.jpg`. A missing file shows a grey placeholder.
+Each tile uses `images/categories/<slug>.png` (600x450, transparent background). To change a photo, replace that file keeping the same name, e.g. `graphics-cards.png`. A missing file shows a grey placeholder.

@@ -77,7 +77,7 @@ p { margin: 0 0 1rem; }
 .nav-row li a[aria-current="page"] { color: var(--accent); border-bottom-color: var(--accent); }
 
 /* Hero and categories */
-.hero { padding: 0; color: #fff; overflow: hidden; background: linear-gradient(90deg, rgba(8, 4, 4, .6) 0%, rgba(8, 4, 4, .2) 40%, rgba(8, 4, 4, 0) 65%), url("../images/hero.jpg") right 55% / cover no-repeat, #1a0807; }
+.hero { padding: 0; color: #fff; overflow: hidden; background: linear-gradient(90deg, rgba(8, 4, 4, .6) 0%, rgba(8, 4, 4, .2) 40%, rgba(8, 4, 4, 0) 65%), url("../images/hero.jpg") 75% 55% / cover no-repeat, #1a0807; }
 .hero-grid { display: block; padding-top: 5rem; padding-bottom: 3rem; min-height: 580px; display: flex; align-items: flex-end; }
 .hero-eyebrow { margin: 0 0 .75rem; font-size: .85rem; font-weight: 600; color: #e6d6d7; }
 .hero h1 { margin: 0 0 1.75rem; max-width: 10em; text-shadow: 0 2px 18px rgba(0, 0, 0, .5); font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.1; letter-spacing: -.02em; color: #fff; }
