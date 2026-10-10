@@ -1,0 +1,20 @@
+{
+  "name": "Mesh Ergonomic Gaming Chair",
+  "category": "gaming-chair",
+  "price": 229,
+  "availability": "In stock",
+  "summary": "Breathable mesh back with adjustable lumbar",
+  "description": "A cool, supportive chair designed for long sessions.",
+  "images": [
+    "main.svg"
+  ],
+  "specs": {
+    "Material": "Mesh and fabric",
+    "Recline": "Up to 135 degrees",
+    "Armrests": "3D adjustable",
+    "Max load": "130 kg"
+  },
+  "additional": {
+    "Warranty": "2 years"
+  }
+}

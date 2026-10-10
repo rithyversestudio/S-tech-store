@@ -1,0 +1,25 @@
+{
+  "name": "Tenkeyless Mechanical Keyboard",
+  "category": "keyboards",
+  "recommended": true,
+  "price": 89,
+  "availability": "In stock",
+  "summary": "Compact wired keyboard with hot-swappable switches",
+  "description": "A compact keyboard that frees up desk space. Switches can be swapped without soldering.",
+  "images": [
+    "main.svg"
+  ],
+  "specs": {
+    "Type": "Keyboard",
+    "Layout": "Tenkeyless, US ANSI",
+    "Switches": "Linear, hot-swappable",
+    "Connection": "USB-C, detachable cable",
+    "Keycaps": "PBT, double-shot",
+    "Backlight": "White LED"
+  },
+  "additional": {
+    "Dimensions": "360 x 140 x 38 mm",
+    "Weight": "780 g",
+    "Warranty": "2 years"
+  }
+}

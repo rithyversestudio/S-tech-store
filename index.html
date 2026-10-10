@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>S TECH STORE | Custom PC builds and accessories</title>
+  <meta name="description" content="Custom-built PCs and computer accessories.">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="styles/style.css?v=6">
+</head>
+<body>
+  <header id="site-header" class="site-header" data-active="home"></header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="hero-eyebrow">Custom PCs. Premium parts.</p>
+          <h1>Powerful PCs.<br>Built for You.</h1>
+          <a class="btn hero-btn" href="#catalog">Shop now</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="categories">
+      <div class="container">
+        <h2 class="section-title">Shop by Category</h2>
+        <div class="tile-row" id="tile-row"></div>
+      </div>
+    </section>
+
+    <section class="section" id="recommended" hidden>
+      <div class="container">
+        <h2 class="section-title">Recommended for You</h2>
+        <div id="rec-row" class="rec-row"></div>
+      </div>
+    </section>
+
+    <section class="section promo-section" id="promo">
+      <div class="container">
+        <div class="promo-banner">
+          <div class="promo-copy">
+            <p class="promo-eyebrow">Build your dream PC</p>
+            <h2>Custom PC builds, made to order</h2>
+            <p>Tell us your budget and games, and we will build, test and deliver it. Free advice on every order.</p>
+          </div>
+          <a class="btn promo-btn" href="#contact">Contact us</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="catalog">
+      <div class="container">
+        <div id="category-bar" class="category-bar" hidden>
+          <a class="btn btn-outline" href="index.html">&larr; Back to home</a>
+          <h2 id="category-title"></h2>
+        </div>
+        <h2 id="products-title">Products</h2>
+        <div class="toolbar">
+          <label class="field">
+            <span>Category</span>
+            <select id="category"></select>
+          </label>
+          <label class="field">
+            <span>Sort by</span>
+            <select id="sort">
+              <option value="name-asc">Name: A to Z</option>
+              <option value="name-desc">Name: Z to A</option>
+              <option value="price-asc">Price: low to high</option>
+              <option value="price-desc">Price: high to low</option>
+            </select>
+          </label>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite">Loading products...</p>
+        <div id="grid" class="grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+
+  <script src="scripts/common.js?v=6"></script>
+  <script src="scripts/app.js?v=6"></script>
+</body>
+</html>

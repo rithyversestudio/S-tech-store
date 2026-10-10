@@ -1,0 +1,29 @@
+{
+  "name": "Studio Creator Workstation",
+  "category": "pc-builds",
+  "recommended": true,
+  "price": 2799,
+  "availability": "Made to order",
+  "summary": "Ryzen 9 with 64 GB RAM for editing and 3D work",
+  "description": "Built for video editing, 3D rendering and large photo libraries.\nMade to order, usually shipped within 7 business days.",
+  "images": [
+    "main.svg",
+    "inside.svg",
+    "back.svg"
+  ],
+  "specs": {
+    "CPU": "AMD Ryzen 9 7950X",
+    "GPU": "NVIDIA GeForce RTX 4070 Ti Super 16 GB",
+    "Motherboard": "X670E ATX, Wi-Fi 6E",
+    "RAM": "64 GB DDR5-5600 (2 x 32 GB)",
+    "Storage": "1 TB NVMe system drive + 4 TB NVMe project drive",
+    "PSU": "850 W 80+ Gold, fully modular",
+    "Cooler": "360 mm AIO liquid cooler",
+    "Case": "Full-tower, sound-dampened"
+  },
+  "additional": {
+    "Operating system": "Windows 11 Pro",
+    "Front ports": "2 x USB-A, 1 x USB-C 20 Gbps",
+    "Warranty": "3 years parts, 1 year labor"
+  }
+}

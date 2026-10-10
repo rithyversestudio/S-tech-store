@@ -1,0 +1,20 @@
+{
+  "name": "B760M mATX Motherboard",
+  "category": "motherboards",
+  "price": 119,
+  "availability": "In stock",
+  "summary": "LGA1700 micro-ATX board with DDR4",
+  "description": "A compact budget board for Intel 12th to 14th gen processors.",
+  "images": [
+    "main.svg"
+  ],
+  "specs": {
+    "Socket": "LGA1700",
+    "Chipset": "Intel B760",
+    "Memory": "4 x DDR4, up to 128 GB",
+    "Form factor": "Micro-ATX"
+  },
+  "additional": {
+    "Warranty": "3 years"
+  }
+}
