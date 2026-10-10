@@ -1,0 +1,20 @@
+{
+  "name": "240 mm AIO Liquid Cooler",
+  "category": "cooling-systems",
+  "price": 89,
+  "availability": "In stock",
+  "summary": "Dual-fan liquid cooler for AM5 and LGA1700",
+  "description": "Quiet, efficient cooling for mid-to-high-end processors.",
+  "images": [
+    "main.svg"
+  ],
+  "specs": {
+    "Type": "AIO liquid cooler",
+    "Radiator": "240 mm",
+    "Fans": "2 x 120 mm PWM",
+    "Sockets": "AM4, AM5, LGA1700"
+  },
+  "additional": {
+    "Warranty": "3 years"
+  }
+}

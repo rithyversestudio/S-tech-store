@@ -1,0 +1,21 @@
+{
+  "name": "32 GB DDR5-6000 RGB Kit (2 x 16 GB)",
+  "category": "ram",
+  "price": 109,
+  "availability": "In stock",
+  "summary": "Fast DDR5 memory with RGB lighting",
+  "description": "High-speed memory with EXPO and XMP profiles.",
+  "images": [
+    "main.svg"
+  ],
+  "specs": {
+    "Type": "DDR5",
+    "Capacity": "32 GB (2 x 16 GB)",
+    "Speed": "6000 MHz",
+    "Latency": "CL30",
+    "Lighting": "RGB"
+  },
+  "additional": {
+    "Warranty": "Lifetime"
+  }
+}

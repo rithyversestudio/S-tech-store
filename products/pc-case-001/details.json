@@ -1,0 +1,20 @@
+{
+  "name": "Mesh Airflow ATX Mid-Tower Case",
+  "category": "pc-cases",
+  "price": 89,
+  "availability": "In stock",
+  "summary": "Mesh front panel with 3 pre-installed fans",
+  "description": "A cool-running case with plenty of room for cable management.",
+  "images": [
+    "main.svg"
+  ],
+  "specs": {
+    "Form factor": "ATX mid-tower",
+    "Side panel": "Tempered glass",
+    "Fans": "3 x 120 mm included",
+    "GPU clearance": "360 mm"
+  },
+  "additional": {
+    "Warranty": "1 year"
+  }
+}

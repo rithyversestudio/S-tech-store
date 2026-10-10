@@ -1,0 +1,20 @@
+{
+  "name": "Ergonomic Wireless Mouse",
+  "category": "mice",
+  "price": 29,
+  "availability": "In stock",
+  "summary": "Comfortable wireless mouse for all-day use",
+  "description": "A quiet-click mouse with a contoured shape and long battery life.",
+  "images": [
+    "main.svg"
+  ],
+  "specs": {
+    "Sensor": "Optical, 4,000 DPI",
+    "Buttons": "5",
+    "Connection": "2.4 GHz / Bluetooth",
+    "Battery": "up to 12 months"
+  },
+  "additional": {
+    "Warranty": "1 year"
+  }
+}

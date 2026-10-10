@@ -1,0 +1,21 @@
+{
+  "name": "27\" 1440p 165 Hz Gaming Monitor",
+  "category": "monitors",
+  "price": 249,
+  "availability": "In stock",
+  "summary": "27-inch IPS, QHD, 165 Hz, 1 ms",
+  "description": "A sharp, fast IPS panel for competitive and casual gaming.",
+  "images": [
+    "main.svg"
+  ],
+  "specs": {
+    "Size": "27 inch",
+    "Resolution": "2560 x 1440",
+    "Refresh rate": "165 Hz",
+    "Panel": "IPS, 1 ms",
+    "Ports": "2 x HDMI, DisplayPort"
+  },
+  "additional": {
+    "Warranty": "3 years"
+  }
+}

@@ -26,8 +26,7 @@ The product page URL is `product.html?id=<folder-name>`.
 ### details.json
     {
       "name": "Product name",
-      "category": "pc-builds",          // or "accessories"
-      "type": "gaming-pc",              // optional: matches a "Shop by Category" tile
+      "category": "pc-builds",          // one of the slugs in CATEGORIES (see below)
       "price": 1899,                    // number, USD
       "availability": "In stock",       // "In stock", "Made to order", "Out of stock", ...
       "summary": "One line shown on the card",
@@ -42,9 +41,7 @@ Images can be .jpg, .png, .webp or .svg (the samples are .svg placeholders; repl
 ## Customize
 - Shop name, contact details and social links: `SHOP` at the top of `scripts/common.js` (header and footer on every page).
 - Colors and spacing: variables at the top of `styles/style.css`.
-- New categories: add them to `CATEGORIES` in `scripts/common.js` and to the category `<select>` in `index.html`.
-
-- "Shop by Category" tiles (photos in `images/categories/`, replace the files with real photos and update the `<img src>` in `index.html`): edit the `.tile-row` block in `index.html` (link `index.html?type=<type>#catalog`) and the `TYPES` list in `scripts/app.js`; give each product a matching `"type"` in its `details.json`.
+- Categories: edit `CATEGORIES` in `scripts/common.js` (slug -> label). The "Shop by Category" tiles, the category dropdown, the footer links and the category pages all build from it. Valid slugs: `pc-builds`, `monitors`, `graphics-cards`, `processors`, `motherboards`, `ram`, `storage-ssd-hdd`, `power-supplies`, `pc-cases`, `cooling-systems`, `keyboards`, `mice`, `headsets`, `gaming-chair`, `other-accessories`. A category page is `index.html?category=<slug>`.
 
 ## Category photos
-The "Shop by Category" tiles use `images/categories/<type>.jpg` when it exists and fall back to the `.svg` drawing next to it. To use real photos, save them with these exact names (about 600x450, white or light background works best): `gaming-pc.jpg`, `creator-pc.jpg`, `office-pc.jpg`, `monitor.jpg`, `keyboard.jpg`, `mouse.jpg`.
+Each tile uses `images/categories/<slug>.jpg` when it exists and falls back to the `<slug>.svg` drawing next to it. To use real photos, save them as `<slug>.jpg` (about 600x450, white or light background works best), e.g. `graphics-cards.jpg`.

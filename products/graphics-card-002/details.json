@@ -1,0 +1,20 @@
+{
+  "name": "GeForce RTX 4070 Super 12 GB",
+  "category": "graphics-cards",
+  "price": 629,
+  "availability": "In stock",
+  "summary": "High-frame-rate 1440p gaming card",
+  "description": "A triple-fan card built for 1440p gaming and creative work.",
+  "images": [
+    "main.svg"
+  ],
+  "specs": {
+    "GPU": "NVIDIA GeForce RTX 4070 Super",
+    "Memory": "12 GB GDDR6X",
+    "Outputs": "3 x DisplayPort, 1 x HDMI",
+    "Power": "1 x 16-pin"
+  },
+  "additional": {
+    "Warranty": "3 years"
+  }
+}

@@ -25,32 +25,7 @@
     <section class="section" id="categories">
       <div class="container">
         <h2 class="section-title">Shop by Category</h2>
-        <div class="tile-row">
-          <a class="tile" href="index.html?type=gaming-pc">
-            <img src="images/categories/gaming-pc.jpg" onerror="this.onerror=null;this.src='images/categories/gaming-pc.svg'" alt="" loading="lazy">
-            <span>Gaming PCs</span>
-          </a>
-          <a class="tile" href="index.html?type=creator-pc">
-            <img src="images/categories/creator-pc.jpg" onerror="this.onerror=null;this.src='images/categories/creator-pc.svg'" alt="" loading="lazy">
-            <span>Creator PCs</span>
-          </a>
-          <a class="tile" href="index.html?type=office-pc">
-            <img src="images/categories/office-pc.jpg" onerror="this.onerror=null;this.src='images/categories/office-pc.svg'" alt="" loading="lazy">
-            <span>Office PCs</span>
-          </a>
-          <a class="tile" href="index.html?type=monitor">
-            <img src="images/categories/monitor.jpg" onerror="this.onerror=null;this.src='images/categories/monitor.svg'" alt="" loading="lazy">
-            <span>Monitors</span>
-          </a>
-          <a class="tile" href="index.html?type=keyboard">
-            <img src="images/categories/keyboard.jpg" onerror="this.onerror=null;this.src='images/categories/keyboard.svg'" alt="" loading="lazy">
-            <span>Keyboards</span>
-          </a>
-          <a class="tile" href="index.html?type=mouse">
-            <img src="images/categories/mouse.jpg" onerror="this.onerror=null;this.src='images/categories/mouse.svg'" alt="" loading="lazy">
-            <span>Mice</span>
-          </a>
-        </div>
+        <div class="tile-row" id="tile-row"></div>
       </div>
     </section>
 
@@ -58,6 +33,19 @@
       <div class="container">
         <h2 class="section-title">Recommended for You</h2>
         <div id="rec-row" class="rec-row"></div>
+      </div>
+    </section>
+
+    <section class="section promo-section" id="promo">
+      <div class="container">
+        <div class="promo-banner">
+          <div class="promo-copy">
+            <p class="promo-eyebrow">Build your dream PC</p>
+            <h2>Custom PC builds, made to order</h2>
+            <p>Tell us your budget and games, and we will build, test and deliver it. Free advice on every order.</p>
+          </div>
+          <a class="btn promo-btn" href="#contact">Contact us</a>
+        </div>
       </div>
     </section>
 
@@ -71,11 +59,7 @@
         <div class="toolbar">
           <label class="field">
             <span>Category</span>
-            <select id="category">
-              <option value="all">All products</option>
-              <option value="pc-builds">PC Builds</option>
-              <option value="accessories">Accessories</option>
-            </select>
+            <select id="category"></select>
           </label>
           <label class="field">
             <span>Sort by</span>

@@ -7,8 +7,6 @@ const els = {
   sort: document.getElementById("sort")
 };
 let products = [];
-let activeType = "";
-const TYPES = { "gaming-pc": "Gaming PCs", "creator-pc": "Creator PCs", "office-pc": "Office PCs", "monitor": "Monitors", "keyboard": "Keyboards", "mouse": "Mice" };
 
 const sorters = {
   "name-asc": (a, b) => a.name.localeCompare(b.name),
@@ -18,7 +16,6 @@ const sorters = {
 };
 
 function matches(p, query, category) {
-  if (activeType && p.type !== activeType) return false;
   if (category !== "all" && p.category !== category) return false;
   if (!query) return true;
   const haystack = [p.name, p.summary, p.description, ...Object.values(p.specs || {})].join(" ").toLowerCase();
@@ -64,7 +61,19 @@ function render() {
     : "No products match your search. Try a different keyword or category.";
 }
 
+function buildCategoryUI() {
+  els.category.innerHTML = `<option value="all">All products</option>` +
+    Object.entries(CATEGORIES).map(([k, v]) => `<option value="${esc(k)}">${esc(v)}</option>`).join("");
+  const row = document.getElementById("tile-row");
+  row.innerHTML = Object.entries(CATEGORIES).map(([k, v]) => `
+    <a class="tile" href="index.html?category=${esc(k)}">
+      <img src="images/categories/${esc(k)}.jpg" onerror="this.onerror=null;this.src='images/categories/${esc(k)}.svg'" alt="" loading="lazy">
+      <span>${esc(v)}</span>
+    </a>`).join("");
+}
+
 async function init() {
+  buildCategoryUI();
   try {
     products = await loadAllProducts();
   } catch (err) {
@@ -74,17 +83,15 @@ async function init() {
     return;
   }
   const params = new URLSearchParams(location.search);
-  const type = params.get("type");
-  if (type && TYPES[type]) {
-    activeType = type;
+  const requested = params.get("category");
+  if (requested && CATEGORIES[requested]) {
+    els.category.value = requested;
     document.body.classList.add("category-view");
-    document.title = `${TYPES[type]} | ${SHOP.name}`;
-    document.getElementById("category-title").textContent = TYPES[type];
+    document.title = `${CATEGORIES[requested]} | ${SHOP.name}`;
+    document.getElementById("category-title").textContent = CATEGORIES[requested];
     document.getElementById("category-bar").hidden = false;
     window.scrollTo(0, 0);
   }
-  const requested = params.get("category");
-  if (requested && CATEGORIES[requested]) els.category.value = requested;
   renderRecommended();
   document.getElementById("search-form").addEventListener("submit", (e) => {
     e.preventDefault();

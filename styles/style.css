@@ -101,6 +101,16 @@ body.category-view .hero, body.category-view #categories, body.category-view #pr
 body.category-view .toolbar { grid-template-columns: 1fr; max-width: 280px; }
 body.category-view #recommended, body.searching .hero, body.searching #categories, body.searching #recommended { display: none; }
 
+/* Promo banner (edit the text in index.html, #promo) */
+.promo-banner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem 2rem; flex-wrap: wrap; padding: 2rem 2.25rem; border-radius: 14px; color: #fff; background: linear-gradient(100deg, #1a0807 0%, var(--accent-dark) 55%, var(--accent) 100%); box-shadow: 0 6px 20px rgba(150, 27, 30, .25); }
+.promo-copy { flex: 1 1 380px; }
+.promo-eyebrow { margin: 0 0 .35rem; font-size: .85rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: #f0cfd0; }
+.promo-banner h2 { margin: 0 0 .5rem; font-size: clamp(1.4rem, 3vw, 2rem); color: #fff; }
+.promo-banner p:last-child { margin: 0; color: #f3e3e3; max-width: 38em; }
+.promo-banner .promo-btn { background: #fff; border-color: #fff; color: #1b1e23; border-radius: 999px; padding: .75rem 2rem; font-weight: 600; }
+.promo-banner .promo-btn:hover { background: var(--accent-soft); border-color: var(--accent-soft); color: var(--accent-dark); }
+body.category-view #promo, body.searching #promo { display: none; }
+
 /* Recommended */
 .rec-row { display: flex; gap: 1rem; overflow-x: auto; padding: .25rem .25rem 1rem; margin: 0 -.25rem; scroll-snap-type: x proximity; scrollbar-width: thin; }
 .rec-row > .card { flex: 0 0 280px; scroll-snap-align: start; }

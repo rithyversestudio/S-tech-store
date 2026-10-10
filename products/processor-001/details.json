@@ -1,0 +1,20 @@
+{
+  "name": "AMD Ryzen 5 7600",
+  "category": "processors",
+  "price": 199,
+  "availability": "In stock",
+  "summary": "6-core, 12-thread AM5 processor",
+  "description": "A strong value CPU for gaming and everyday use. Cooler included.",
+  "images": [
+    "main.svg"
+  ],
+  "specs": {
+    "Socket": "AM5",
+    "Cores / Threads": "6 / 12",
+    "Boost clock": "up to 5.1 GHz",
+    "TDP": "65 W"
+  },
+  "additional": {
+    "Warranty": "3 years"
+  }
+}

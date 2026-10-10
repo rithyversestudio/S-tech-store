@@ -1,0 +1,20 @@
+{
+  "name": "16 GB DDR4-3200 Kit (2 x 8 GB)",
+  "category": "ram",
+  "price": 39,
+  "availability": "In stock",
+  "summary": "Reliable dual-channel DDR4 memory",
+  "description": "A simple upgrade for older and budget systems.",
+  "images": [
+    "main.svg"
+  ],
+  "specs": {
+    "Type": "DDR4",
+    "Capacity": "16 GB (2 x 8 GB)",
+    "Speed": "3200 MHz",
+    "Latency": "CL16"
+  },
+  "additional": {
+    "Warranty": "Lifetime"
+  }
+}
