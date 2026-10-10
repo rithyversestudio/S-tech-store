@@ -27,18 +27,16 @@ function matches(p, query, category) {
 function cardHTML(p) {
   const href = `product.html?id=${encodeURIComponent(p.id)}`;
   return `
-    <article class="card">
-      <a href="${href}" tabindex="-1" aria-hidden="true"><img src="${esc(p.images[0] || PLACEHOLDER)}" alt="" loading="lazy"></a>
+    <a class="card" href="${href}" aria-label="View details for ${esc(p.name)}">
+      <img src="${esc(p.images[0] || PLACEHOLDER)}" alt="" loading="lazy">
       <div class="card-body">
-        <span class="card-category">${esc(CATEGORIES[p.category] || p.category)}</span>
         <h3>${esc(p.name)}</h3>
         <p class="card-summary">${esc(p.summary || "")}</p>
         <div class="card-footer">
           <span class="price">${formatPrice(p.price)}</span>
-          <a class="btn" href="${href}" aria-label="View details for ${esc(p.name)}">View Details</a>
         </div>
       </div>
-    </article>`;
+    </a>`;
 }
 
 function renderRecommended() {
