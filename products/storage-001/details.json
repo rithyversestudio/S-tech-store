@@ -1,0 +1,20 @@
+{
+  "name": "1 TB NVMe PCIe 4.0 SSD",
+  "category": "storage-ssd-hdd",
+  "price": 79,
+  "availability": "In stock",
+  "summary": "Fast M.2 SSD, up to 7,000 MB/s read",
+  "description": "Quick boot and load times for gaming and work.",
+  "images": [
+    "main.svg"
+  ],
+  "specs": {
+    "Type": "SSD, M.2 NVMe",
+    "Capacity": "1 TB",
+    "Read speed": "up to 7,000 MB/s",
+    "Write speed": "up to 5,000 MB/s"
+  },
+  "additional": {
+    "Warranty": "5 years"
+  }
+}
