@@ -88,11 +88,23 @@ function render(p) {
   applyImageFallback(root);
 }
 
+// Keeps only the images that actually exist, so the gallery shows just the files you uploaded.
+function existingImages(urls) {
+  return Promise.all(urls.map((u) => new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve(u);
+    img.onerror = () => resolve(null);
+    img.src = u;
+  }))).then((list) => list.filter(Boolean));
+}
+
 async function init() {
   const id = new URLSearchParams(location.search).get("id");
   if (!id || !/^[\w-]+$/.test(id)) return showNotFound();
   try {
-    render(await loadProduct(id));
+    const p = await loadProduct(id);
+    p.images = await existingImages(p.images.slice(0, MAX_IMAGES));
+    render(p);
   } catch (err) {
     console.error(err);
     showNotFound();

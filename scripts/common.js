@@ -18,7 +18,7 @@ const SHOP = {
 // Single source of truth for categories: slug -> label (order = display order).
 // Each product's "category" in details.json must be one of these slugs.
 // Bump this number whenever you replace any image so browsers load the new file.
-const IMG_VER = "5";
+const IMG_VER = "7";
 
 const CATEGORIES = {
   "pc-builds": "PC Builds",
