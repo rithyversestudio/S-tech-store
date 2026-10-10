@@ -24,30 +24,20 @@ function matches(p, query, category) {
   return query.split(/\s+/).every((word) => haystack.includes(word));
 }
 
-function stockClass(text = "") {
-  const t = text.toLowerCase();
-  if (t.includes("out")) return "bad";
-  if (t.includes("in stock")) return "ok";
-  return "warn";
-}
-
 // The whole card is one tappable link (the product name carries the link, a CSS overlay stretches it over the card).
 function cardHTML(p) {
   const href = `product.html?id=${encodeURIComponent(p.id)}`;
-  const stock = p.availability ? `<span class="card-badge ${stockClass(p.availability)}">${esc(p.availability)}</span>` : "";
   return `
-    <article class="card${/out/i.test(p.availability || "") ? " is-out" : ""}">
+    <article class="card">
       <div class="card-media">
         <img src="${esc(p.images[0] || PLACEHOLDER)}" alt="" loading="lazy">
-        ${stock}
       </div>
       <div class="card-body">
-        <span class="card-category">${esc(CATEGORIES[p.category] || p.category)}</span>
         <h3><a class="card-link" href="${href}">${esc(p.name)}</a></h3>
-        <p class="card-summary">${esc(p.summary || "")}</p>
+        <span class="card-category">${esc(CATEGORIES[p.category] || p.category)}</span>
         <div class="card-footer">
           <span class="price">${formatPrice(p.price)}</span>
-          <span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
         </div>
       </div>
     </article>`;
