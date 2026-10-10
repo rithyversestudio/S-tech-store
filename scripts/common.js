@@ -1,14 +1,17 @@
 // Shared helpers and site-wide settings. Edit SHOP to change the header/footer on every page.
 const SHOP = {
   name: "S TECH STORE",
-  email: "hello@stechstore.example",
-  phone: "+1 555 010 0199",
+  email: "stectstore3@gmail.com",
+  phone: "093 393 345",
+  telegram: "https://t.me/PCANDGAMESTORE",
   address: "12 Circuit Lane, Austin, TX 78701",
   hours: "Mon to Sat, 9:00 to 18:00",
+  mapLink: "https://maps.app.goo.gl/r9RHLS3vN4okqGZg8", // opens when the map card is tapped
+  mapUrl: "https://maps.app.goo.gl/r9RHLS3vN4okqGZg8",
+  mapEmbed: "https://maps.google.com/maps?q=11.5428274,104.8345808&z=17&output=embed",
   social: [
-    { label: "Instagram", url: "https://www.instagram.com/" },
-    { label: "Facebook", url: "https://www.facebook.com/" },
-    { label: "YouTube", url: "https://www.youtube.com/" }
+    { label: "Facebook", url: "https://www.facebook.com/sellcomputer" },
+    { label: "Telegram", url: "https://t.me/COMPUTERSTOREBUY" }
   ]
 };
 
@@ -74,6 +77,7 @@ function renderChrome() {
 
   footer.id = "contact";
   const icons = {
+    Telegram: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.4 4.2 2.9 11.3c-1.1.4-1.1 1.1-.2 1.4l4.7 1.5 1.8 5.5c.2.6.4.8.8.8.4 0 .6-.2.9-.4l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.3-1.6zM8.5 13.7l9.7-6.1c.5-.3.9-.1.5.2l-8 7.2-.3 3.3-1.9-4.6z"/></svg>',
     Instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>',
     Facebook: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5H16l.5-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.5V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21h3z"/></svg>',
     YouTube: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg>'
@@ -91,18 +95,24 @@ function renderChrome() {
         </ul></div>
         <div><h3>Contact</h3><ul>
           <li><a href="mailto:${esc(SHOP.email)}">${esc(SHOP.email)}</a></li>
+          <li><a href="${esc(SHOP.telegram)}" target="_blank" rel="noopener">Telegram: @${esc(SHOP.telegram.split("/").pop())}</a></li>
           <li><a href="tel:${esc(SHOP.phone.replace(/\s/g, ""))}">${esc(SHOP.phone)}</a></li>
-          <li>${esc(SHOP.address)}</li>
-          <li>${esc(SHOP.hours)}</li>
         </ul></div>
         <div><h3>Follow Us</h3>
           <ul class="social">
             ${SHOP.social.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener" aria-label="${esc(s.label)}" title="${esc(s.label)}">${icons[s.label] || esc(s.label)}</a></li>`).join("")}
           </ul>
         </div>
-        <p class="footer-slogan">Better Technology<br><strong>A Brighter Tomorrow.</strong></p>
+        <div><h3>Location</h3>
+          <a class="map-card" href="${esc(SHOP.mapLink)}" target="_blank" rel="noopener" aria-label="Open ${esc(SHOP.name)} location in Google Maps">
+            <iframe src="${esc(SHOP.mapEmbed)}" title="Map preview" loading="lazy" tabindex="-1" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </a>
+        </div>
       </div>
-      <p class="copyright">&copy; ${new Date().getFullYear()} ${esc(SHOP.name)}. All rights reserved. Prices and availability may change.</p>
+      <div class="footer-bottom">
+        <p class="copyright">&copy; ${new Date().getFullYear()} ${esc(SHOP.name)}. All rights reserved. Prices and availability may change.</p>
+        <p class="footer-slogan">Better Technology &middot; <strong>A Brighter Tomorrow.</strong></p>
+      </div>
     </div>`;
 }
 
