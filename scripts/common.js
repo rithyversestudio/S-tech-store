@@ -75,8 +75,15 @@ function applyImageFallback(root) {
 function renderChrome() {
   const header = document.getElementById("site-header");
   const footer = document.getElementById("site-footer");
-  const active = header.dataset.active;
-  const link = (href, label, key) => `<li><a href="${href}"${key === active ? ' aria-current="page"' : ""}>${label}</a></li>`;
+    const ic = (d) => `<svg class="nav-ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+  const navIcons = {
+    home: ic('<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>'),
+    pc: ic('<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>'),
+    grid: ic('<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>'),
+    mail: ic('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>'),
+    chevron: `<svg class="nav-chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>`
+  };
+  const navLink = (href, label, key, icon) => `<a href="${href}" data-nav="${key}">${icon}<span>${label}</span></a>`;
 
   const searchIcon = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>`;
   header.innerHTML = `
@@ -90,11 +97,19 @@ function renderChrome() {
       </form>
     </div>
     <div class="nav-row"><nav class="container" aria-label="Main"><ul>
-      ${link("index.html", "Home", "home")}
-      ${link("index.html?category=pc-builds#catalog", "PC Builds", "pc-builds")}
-      ${link("index.html#categories", "All Categories", "categories")}
-      ${link("#contact", "Contact", "contact")}
+      <li>${navLink("index.html", "Home", "home", navIcons.home)}</li>
+      <li>${navLink("index.html?category=pc-builds", "PC Builds", "pc-builds", navIcons.pc)}</li>
+      <li class="has-menu">
+        <button type="button" class="nav-trigger" id="cat-trigger" data-nav="categories" aria-expanded="false" aria-controls="cat-menu" aria-haspopup="true">${navIcons.grid}<span>Categories</span>${navIcons.chevron}</button>
+        <div class="mega" id="cat-menu" hidden>
+          <ul>${Object.entries(CATEGORIES).map(([k, v]) => `<li><a href="index.html?category=${esc(k)}" data-category="${esc(k)}">${esc(v)}</a></li>`).join("")}</ul>
+        </div>
+      </li>
+      <li>${navLink("#contact", "Contact", "contact", navIcons.mail)}</li>
     </ul></nav></div>`;
+
+  setupCategoryMenu();
+  setActiveNav(new URLSearchParams(location.search).get("category") || (header.dataset.active === "home" ? "" : header.dataset.active));
 
   footer.id = "contact";
   const icons = {
@@ -191,3 +206,33 @@ renderChrome();
   form.addEventListener("submit", close);
   document.addEventListener("click", (e) => { if (!form.contains(e.target)) close(); });
 })();
+
+// Highlights the current section in the nav. `key` is "", a category slug, or "contact".
+function setActiveNav(key) {
+  document.querySelectorAll("#site-header [aria-current]").forEach((el) => el.removeAttribute("aria-current"));
+  const mark = (el) => el && el.setAttribute("aria-current", "page");
+  if (!key) return mark(document.querySelector('#site-header a[data-nav="home"]'));
+  if (key === "pc-builds") return mark(document.querySelector('#site-header a[data-nav="pc-builds"]'));
+  if (CATEGORIES[key]) {
+    mark(document.getElementById("cat-trigger"));
+    mark(document.querySelector(`#cat-menu a[data-category="${key}"]`));
+  }
+}
+
+// "All Categories" dropdown: click or keyboard to open, Esc or outside click to close.
+function setupCategoryMenu() {
+  const trigger = document.getElementById("cat-trigger");
+  const menu = document.getElementById("cat-menu");
+  const set = (open) => {
+    menu.hidden = !open;
+    trigger.setAttribute("aria-expanded", String(open));
+    // on phones the menu is position: fixed, so place it right under the nav row
+    if (open && getComputedStyle(menu).position === "fixed") menu.style.top = `${document.querySelector(".nav-row").getBoundingClientRect().bottom}px`;
+    if (open) trigger.scrollIntoView({ block: "nearest", inline: "nearest" });
+  };
+  window.addEventListener("resize", () => { if (!menu.hidden) set(false); });
+  trigger.addEventListener("click", () => set(menu.hidden));
+  document.addEventListener("click", (e) => { if (!menu.hidden && !menu.contains(e.target) && !trigger.contains(e.target)) set(false); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !menu.hidden) { set(false); trigger.focus(); } });
+  menu.addEventListener("click", (e) => { if (e.target.closest("a")) set(false); });
+}

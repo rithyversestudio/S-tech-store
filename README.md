@@ -31,12 +31,12 @@ The product page URL is `product.html?id=<folder-name>`.
       "availability": "In stock",       // "In stock", "Made to order", "Out of stock", ...
       "summary": "One line shown on the card",
       "description": "Paragraph. Use \n for a new paragraph.",
-      "images": ["main.jpg", "inside.jpg"],   // first image is the card thumbnail
+      "images": ["main.jpg", "side.jpg", "back.jpg", "box.jpg"],   // up to 4 images; the first is the card thumbnail
       "specs": { "CPU": "...", "GPU": "..." },       // any labels you like
       "additional": { "Warranty": "..." }            // optional
     }
 
-Images can be .jpg, .png, .webp or .svg (the samples are .svg placeholders; replace them with real photos and update the file names in `details.json`). Missing images fall back to a grey placeholder, and a product whose `details.json` is missing or broken is skipped in the catalog.
+Each product shows up to 4 images (extra ones are ignored). With 2 or more, the product page shows thumbnails, previous/next arrows, keyboard arrow keys and swipe. Images can be .jpg, .png, .webp or .svg (the samples are .svg placeholders; replace them with real photos and update the file names in `details.json`). Missing images fall back to a grey placeholder, and a product whose `details.json` is missing or broken is skipped in the catalog.
 
 ## Customize
 - Shop name, contact details and social links: `SHOP` at the top of `scripts/common.js` (header and footer on every page).

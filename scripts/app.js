@@ -3,10 +3,12 @@ const els = {
   grid: document.getElementById("grid"),
   status: document.getElementById("status"),
   search: document.getElementById("site-search"),
+  catSearch: document.getElementById("cat-search"),
   category: document.getElementById("category"),
   sort: document.getElementById("sort")
 };
 let products = [];
+let activeCategory = ""; // set on a category page; the in-category search is limited to it
 
 const sorters = {
   "name-asc": (a, b) => a.name.localeCompare(b.name),
@@ -49,15 +51,17 @@ function renderRecommended() {
 }
 
 function render() {
-  const query = els.search.value.trim().toLowerCase();
-  const list = products.filter((p) => matches(p, query, els.category.value)).sort(sorters[els.sort.value]);
+  // On a category page the grid is filtered by the in-category box only (the header search is site-wide).
+  const typed = activeCategory ? els.catSearch.value : els.search.value;
+  const query = typed.trim().toLowerCase();
+  const list = products.filter((p) => matches(p, query, activeCategory || els.category.value)).sort(sorters[els.sort.value]);
   els.grid.innerHTML = list.map(cardHTML).join("");
   applyImageFallback(els.grid);
-  document.body.classList.toggle("searching", !!query);
-  document.getElementById("products-title").textContent = query ? `Results for \u201c${els.search.value.trim()}\u201d` : "Products";
+  document.body.classList.toggle("searching", !!query && !activeCategory);
+  document.getElementById("products-title").textContent = query && !activeCategory ? `Results for \u201c${typed.trim()}\u201d` : "Products";
   els.status.className = "status";
   els.status.textContent = list.length
-    ? `Showing ${list.length} of ${products.length} products`
+    ? `Showing ${list.length} of ${activeCategory ? products.filter((p) => p.category === activeCategory).length : products.length} products`
     : "No products match your search. Try a different keyword or category.";
 }
 
@@ -86,6 +90,9 @@ async function init() {
   const requested = params.get("category");
   if (requested && CATEGORIES[requested]) {
     els.category.value = requested;
+    activeCategory = requested;
+    els.catSearch.placeholder = `Search in ${CATEGORIES[requested]}...`;
+    document.getElementById("cat-search-field").hidden = false;
     document.body.classList.add("category-view");
     document.title = `${CATEGORIES[requested]} | ${SHOP.name}`;
     document.getElementById("category-title").textContent = CATEGORIES[requested];
@@ -94,6 +101,7 @@ async function init() {
   }
   renderRecommended();
   document.getElementById("search-form").addEventListener("submit", (e) => {
+    if (activeCategory) return; // header search on a category page goes to a site-wide search on the home page
     e.preventDefault();
     const q = els.search.value.trim();
     history.replaceState(null, "", q ? `index.html?q=${encodeURIComponent(q)}` : "index.html");
@@ -102,6 +110,7 @@ async function init() {
   });
   ["input", "change"].forEach((evt) => {
     els.search.addEventListener(evt, render);
+    els.catSearch.addEventListener(evt, render);
     els.category.addEventListener(evt, render);
     els.sort.addEventListener(evt, render);
   });

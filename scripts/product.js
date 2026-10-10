@@ -21,13 +21,14 @@ function availabilityClass(text = "") {
   return "warn";
 }
 
+// A product shows up to this many images (the first one is also the card thumbnail).
+const MAX_IMAGES = 4;
+
 function render(p) {
   document.title = `${p.name} | ${SHOP.name}`;
-  document.getElementById("site-header").querySelectorAll("a").forEach((a) => {
-    if (a.href.includes(`category=${p.category}`)) a.setAttribute("aria-current", "page");
-  });
+  setActiveNav(p.category);
 
-  const images = p.images.length ? p.images : [PLACEHOLDER];
+  const images = p.images.length ? p.images.slice(0, MAX_IMAGES) : [PLACEHOLDER];
   const paragraphs = String(p.description || "").split("\n").filter(Boolean).map((t) => `<p>${esc(t)}</p>`).join("");
   const extra = p.additional && Object.keys(p.additional).length
     ? `<section><h2>Additional specifications</h2>${specList(p.additional)}</section>` : "";
@@ -37,7 +38,11 @@ function render(p) {
   root.innerHTML = `
     <div class="product-top">
       <div>
-        <img id="main-image" class="gallery-main" src="${esc(images[0])}" alt="${esc(p.name)}">
+        <div class="gallery-frame">
+          <img id="main-image" class="gallery-main" src="${esc(images[0])}" alt="${esc(p.name)}">
+          ${images.length > 1 ? `<button class="gallery-nav prev" type="button" aria-label="Previous image">&#8249;</button>
+          <button class="gallery-nav next" type="button" aria-label="Next image">&#8250;</button>` : ""}
+        </div>
         ${images.length > 1 ? `<div class="thumbs">${images.map((src, i) => `
           <button class="thumb" type="button" data-src="${esc(src)}" aria-label="Show image ${i + 1}" aria-current="${i === 0}">
             <img src="${esc(src)}" alt="">
@@ -55,12 +60,31 @@ function render(p) {
     <div class="spec-grid">${specs}${extra}</div>`;
 
   const main = document.getElementById("main-image");
-  root.querySelectorAll(".thumb").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      main.src = btn.dataset.src;
-      root.querySelectorAll(".thumb").forEach((b) => b.setAttribute("aria-current", String(b === btn)));
+  const thumbs = [...root.querySelectorAll(".thumb")];
+  let current = 0;
+  function show(i) {
+    current = (i + images.length) % images.length;
+    main.src = images[current];
+    thumbs.forEach((b, n) => b.setAttribute("aria-current", String(n === current)));
+  }
+  thumbs.forEach((btn, i) => btn.addEventListener("click", () => show(i)));
+  root.querySelector(".gallery-nav.prev")?.addEventListener("click", () => show(current - 1));
+  root.querySelector(".gallery-nav.next")?.addEventListener("click", () => show(current + 1));
+  if (images.length > 1) {
+    document.addEventListener("keydown", (e) => {
+      if (e.target.closest("input, textarea, select")) return;
+      if (e.key === "ArrowLeft") show(current - 1);
+      else if (e.key === "ArrowRight") show(current + 1);
     });
-  });
+    // swipe on touch screens
+    let x0 = null;
+    main.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    main.addEventListener("touchend", (e) => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 40) show(current + (dx < 0 ? 1 : -1));
+    });
+  }
   applyImageFallback(root);
 }
 
